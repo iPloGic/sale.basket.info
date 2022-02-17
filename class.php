@@ -13,9 +13,6 @@ use \Bitrix\Catalog\Product\Basket;
 class iplogicSaleBasketInfo extends \CBitrixComponent implements \Bitrix\Main\Engine\Contract\Controllerable, \Bitrix\Main\Errorable
 {
 
-	public $order;
-	protected $arLastOrder;
-
 	/** @var ErrorCollection */
 	protected $errorCollection;
 
