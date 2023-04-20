@@ -3,8 +3,8 @@
 use \Bitrix\Main\Localization\Loc;
 
 $arComponentDescription = array(
-	"NAME" => Loc::getMessage('COMPONENT_NAME'),
-	"DESCRIPTION" => Loc::getMessage('COMPONENT_DESCRIPTION'),
+	"NAME" => Loc::getMessage('IPL_SBI_COMPONENT_NAME'),
+	"DESCRIPTION" => Loc::getMessage('IPL_SBI_COMPONENT_DESCRIPTION'),
 	"CACHE_PATH" => "Y",
 	"PATH" => array (
 		"ID" => "iplogic",

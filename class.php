@@ -23,11 +23,11 @@ class iplogicSaleBasketInfo extends \CBitrixComponent implements \Bitrix\Main\En
 		$this->errorCollection = new ErrorCollection();
 
 		if(!Loader::includeModule('sale')){
-			$this->errorCollection[] = new Error('No sale module');
+			$this->setError('No sale module');
 		};
 
 		if(!Loader::includeModule('catalog')){
-			$this->errorCollection[] = new Error('No catalog module');
+			$this->setError('No catalog module');
 		};
 	}
 
@@ -90,13 +90,13 @@ class iplogicSaleBasketInfo extends \CBitrixComponent implements \Bitrix\Main\En
 				try {
 					call_user_func([$this, $this->arParams['ACTION'] . "Action"]);
 				} catch (\Exception $e) {
-					$this->errorCollection[] = new Error($e->getMessage());
+					$this->setError($e->getMessage());
 				}
 			}
 		}
 
 		if (count($this->errorCollection)) {
-			$this->arResponse['errors'] = $this->errorCollection;
+			$this->arResponse['errors'] = $this->getError();
 		}
 
 		if ($this->arParams['IS_AJAX']) {
@@ -130,6 +130,17 @@ class iplogicSaleBasketInfo extends \CBitrixComponent implements \Bitrix\Main\En
 		$arQuantityList = $basket->getQuantityList();
 		$this->arResult['QUANTITY'] = round(array_sum($arQuantityList));
 		$this->arResult['POSITIONS'] = count($arQuantityList);
+	}
+
+
+	/**
+	 * Setting error.
+	 * @return boolean
+	 */
+	protected function setError($str, $code = 0)
+	{
+		$error = new \Bitrix\Main\Error($str, $code, "");
+		$this->errorCollection->setError($error);
 	}
 
 	/**

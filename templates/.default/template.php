@@ -22,8 +22,6 @@ foreach($arParams as $key => $val) {
 		continue;
 	if($key == "ACTION")
 		continue;
-	if($key == "PRODUCT_ID")
-		continue;
 	$arParameters[$key] = $val;
 }
 $arJsParams = [
